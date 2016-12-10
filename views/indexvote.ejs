@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <title>Voting App</title>
+  <link href="https://fonts.googleapis.com/css?family=Poiret+One|Tangerine|Oswald|Quicksand" rel="stylesheet"> 
+  <link rel="stylesheet" type="text/css" href="main.css">
+     <!-- Resize page when window is resized - fluid layout -->
+  
+ </head>
+
+<body>
+<div class="container">
+<div class="nav_bar">
+<% if (userID === undefined){ %>
+<ul>
+<li><a href="/auth/github">Log in with Gitub</a></li>
+</ul>
+<% } else { %>
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="/addPoll">Create a Poll!</a></li>
+<li><a href="/myPolls">View My Polls</a></li>
+<li><a href= "/auth/github">Log out</a></li>
+   </ul>
+    <% } %>
+</div>    
+</div>
+<div class="container">
+<div class="container_inner">
+
+ <h1>
+    <%= title %>
+ </h1>
+    <ul id='indexUl'>
+        <% for (var i = 0; i < items.length; i++) { %>
+      
+           
+            <li>
+                <a class='indexVoteLinks' href= 'displayPoll/<%= items[i].id %>' > <%= items[i].desc %></a>
+                <% if(i != items.length-1){ %> 
+                <h4>&#9830 &#9830 &#9830</h4> 
+               <% } %>
+            </li>  
+         <% } %>
+    </ul>
+   
+    </div>
+    </div>
+   
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <script type="text/javascript">
+  var count = 3;
+   function validateForm(){
+    var x = document.forms["addPoll"]["pollName"].value;
+    var y = document.forms["addPoll"]["option1"].value;
+    var z = document.forms["addPoll"]["option2"].value;
+    console.log("y is" + y);
+    console.log("x is" + x);
+    if(x == ""){
+     alert("The poll must have a title");
+     return false;
+    }
+    if(y === "" || z === ""){
+     alert("Please add at least 2 options");
+     return false;
+    }
+   }
+   
+   function addOption() {
+     var input = document.createElement('input');
+     input.type = 'text';
+     input.name = 'option';
+     var options = document.getElementById('option_boxes');
+     options.appendChild(input);
+     count++;
+      }
+  </script>
+   <title>Create a Poll</title>
+   <link href="https://fonts.googleapis.com/css?family=Poiret+One|Tangerine|Oswald|Quicksand" rel="stylesheet"> 
+  <link rel="stylesheet" href="main.css">
+ </head>
+
+<body>
+    <div class="container">
+<div class="nav_bar">
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="/addPoll">Create a Poll!</a></li>
+<li><a href="/myPolls">View My Polls</a></li>
+<li><a href= "/auth/github">Log out</a></li>
+ </ul>
+</div>        
+</div>
+<div class="container">
+<div class="container_inner">
+ <form name="addPoll" action="/addPoll" method="post" onsubmit="return validateForm()"> 
+ <h1> Create A Poll </h1>
+ <h4>Poll Name</h4> <input type ="text" name ="pollName" placeholder="Name your poll">
+ <div id="option_boxes">
+ <h4>Option One</h4><input type="text" name="option1" placeholder="Option Here">
+ <h4>Option Two</h4><input type ="text" name ="option2" placeholder="Option Here">
+ </div>
+<br>
+<input class="btn btnCreate" type="submit" value="Create Poll" />  
+  </form>
+  <br>
+  <button class="btn btnCreate" onclick="addOption()">Add another option</button>
+   </div>
+   </div>
+   
+    </body>
+    </html>
